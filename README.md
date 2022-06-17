@@ -1,6 +1,8 @@
 
 # Olimpíada Brasileira de Informática 
 
+- [Tarefas](https://olimpiada.ic.unicamp.br/pratique/pu/)
+
 ## Resoluções
 
 - [OBI 2019](2019)

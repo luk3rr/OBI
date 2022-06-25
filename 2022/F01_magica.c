@@ -1,10 +1,14 @@
 #include <stdio.h>
 
 int main() {
-    int N, i, j, m, n, P, linha, coluna;
+    int N, i, j, k, linha, coluna, soma, numeroIlegivel;
+    
     scanf("%d", &N);
+    
     if (N < 3 || N > 10) return 0;
+    
     int M[N][N];
+    int X[N];
     
     for (i=0; i < N; i++) {
         for (j=0; j < N; j++){
@@ -20,35 +24,26 @@ int main() {
             }
         }
     }
-
-    int k=1;
+    
     for (i=0; i < N; i++) {
+        X[i] = 0;
         for (j=0; j < N; j++) {
-            if (M[linha][j] == k) {
-                k++;
-                i=0;
-                break;
-            }
-            for (n=0; n < N; n++) {
-                if (M[n][coluna] == k) {
-                    k++;
-                    i=0;
-                    break;
-                }
-                if (linha == coluna) {
-                    for (m=0; m < N; m++) {
-                        if (M[m][m] == k) {
-                            k++;
-                            i=0;
-                            break;
-                        }
-                    }
-
-                }
-            }
+            X[i] += M[i][j];
         }
     }
+    
+    if (X[N] == X[0]) soma = X[N];
+    else if (X[N] > X[0]) soma = X[N];
+    else soma = X[0];
 
-    printf("%d", k);
+    for (i=0; i < N; i++) {
+        if (X[i] != soma) {
+            numeroIlegivel = X[i] - soma;
+            if (numeroIlegivel < 0) numeroIlegivel *= -1;
+            break;
+        }
+    }
+    
+    printf("%d\n%d\n%d\n", numeroIlegivel, linha+1, coluna+1);
     return 0;
 }
